@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-[100px]">
+    <div className="mb-10 flex flex-col lg:flex-row items-center md:gap-[100px]">
       <div className="w-full lg:flex-1 relative h-[500px]">
         <Image
           src="/contact.png"

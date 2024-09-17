@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Home = () => {
   return (
-    <div className="flex flex-col lg:flex-row text-center md:text-left gap-[100px]">
+    <div className="mb-10 flex flex-col lg:flex-row text-center md:text-left md:gap-[100px]">
       <div className="flex-1 flex flex-col gap-8">
         <h1 className="text-[64px] md:text-[96px] font-bold leading-tight">
           Creative Thoughts Agency.
@@ -42,6 +42,7 @@ const Home = () => {
           fill
           className="object-contain"
           priority
+          unoptimized
         />
       </div>
     </div>

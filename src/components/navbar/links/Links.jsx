@@ -50,8 +50,8 @@ const Links = () => {
       />
 
       {open && (
-        <div className="absolute top-[100px] right-0 h-[calc(100vh-100px)] w-[250px] shadow-lg bg-bg transition-transform duration-300 ease-in-out">
-          <div className="flex flex-col items-center justify-center gap-10">
+        <div className="absolute z-10 top-[100px] right-0 h-[calc(100vh-100px)] w-[250px] shadow-lg bg-bg transition-transform duration-300 ease-in-out">
+          <div className="flex flex-col items-center justify-center mt-6 md:mt-0 gap-10">
             {links.map((link) => (
               <NavLink link={link} key={link.title} />
             ))}
