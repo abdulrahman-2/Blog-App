@@ -37,22 +37,22 @@ import { unstable_noStore as noStore } from "next/cache"; // temporary data
 
 // export const getPosts = async () => {
 //   try {
-//     connectToDb();
+//     await connectToDb(); // Ensure connection is established
 //     const posts = await Post.find();
 //     return posts;
 //   } catch (err) {
-//     console.log(err);
+//     console.error("Error fetching posts:", err); // Enhanced logging
 //     throw new Error("Failed to fetch posts!");
 //   }
 // };
 
 // export const getPost = async (slug) => {
 //   try {
-//     connectToDb();
+//     await connectToDb(); // Ensure connection is established
 //     const post = await Post.findOne({ slug });
 //     return post;
 //   } catch (err) {
-//     console.log(err);
+//     console.error("Error fetching post:", err); // Enhanced logging
 //     throw new Error("Failed to fetch post!");
 //   }
 // };
@@ -60,22 +60,22 @@ import { unstable_noStore as noStore } from "next/cache"; // temporary data
 // export const getUser = async (id) => {
 //   noStore();
 //   try {
-//     connectToDb();
+//     await connectToDb(); // Ensure connection is established
 //     const user = await User.findById(id);
 //     return user;
 //   } catch (err) {
-//     console.log(err);
+//     console.error("Error fetching user:", err); // Enhanced logging
 //     throw new Error("Failed to fetch user!");
 //   }
 // };
 
 // export const getUsers = async () => {
 //   try {
-//     connectToDb();
+//     await connectToDb(); // Ensure connection is established
 //     const users = await User.find();
 //     return users;
 //   } catch (err) {
-//     console.log(err);
+//     console.error("Error fetching users:", err); // Enhanced logging
 //     throw new Error("Failed to fetch users!");
 //   }
 // };
@@ -86,7 +86,7 @@ export const getPosts = async () => {
     const posts = await Post.find();
     return posts;
   } catch (err) {
-    console.error("Error fetching posts:", err); // Enhanced logging
+    console.error("Error fetching posts:", err);
     throw new Error("Failed to fetch posts!");
   }
 };
@@ -97,7 +97,7 @@ export const getPost = async (slug) => {
     const post = await Post.findOne({ slug });
     return post;
   } catch (err) {
-    console.error("Error fetching post:", err); // Enhanced logging
+    console.error("Error fetching post:", err);
     throw new Error("Failed to fetch post!");
   }
 };
@@ -109,7 +109,7 @@ export const getUser = async (id) => {
     const user = await User.findById(id);
     return user;
   } catch (err) {
-    console.error("Error fetching user:", err); // Enhanced logging
+    console.error("Error fetching user:", err);
     throw new Error("Failed to fetch user!");
   }
 };
@@ -120,7 +120,7 @@ export const getUsers = async () => {
     const users = await User.find();
     return users;
   } catch (err) {
-    console.error("Error fetching users:", err); // Enhanced logging
+    console.error("Error fetching users:", err);
     throw new Error("Failed to fetch users!");
   }
 };
