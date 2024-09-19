@@ -1,5 +1,10 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "Contact",
+  description: "Next.js Contact description",
+};
+
 const Contact = () => {
   return (
     <div className="mb-10 flex flex-col lg:flex-row items-center md:gap-[100px]">

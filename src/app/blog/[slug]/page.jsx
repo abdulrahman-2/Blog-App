@@ -13,6 +13,16 @@ import { Suspense } from "react";
 
 // fetch data without api
 
+export const generateMetadata = async ({ params }) => {
+  const { slug } = params;
+  const post = await getPost(slug);
+
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+};
+
 const Post = async ({ params }) => {
   const { slug } = params;
 

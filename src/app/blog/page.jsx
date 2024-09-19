@@ -1,6 +1,11 @@
 import PostCard from "@/components/postCard/PostCard";
 import { getPosts } from "@/lib/data";
 
+export const metadata = {
+  title: "Blog",
+  description: "Next.js Blog description",
+};
+
 // fetch data with api
 // const getPosts = async () => {
 //   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {

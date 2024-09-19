@@ -1,6 +1,11 @@
 import Image from "next/image";
 import React from "react";
 
+export const metadata = {
+  title: "About",
+  description: "Next.js About description",
+};
+
 const About = () => {
   return (
     <div className="my-10 flex flex-col lg:flex-row text-center md:text-left md:gap-[100px]">
