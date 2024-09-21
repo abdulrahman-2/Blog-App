@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Login = () => {
   return (
-    <div className="my-20 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-[200px]">
+    <div className="my-10 md:my-20 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-[200px]">
       <div className="lg:flex-1 relative w-full h-[500px]">
         <Image
           src="/undraw_mobile_login_re_9ntv.svg"

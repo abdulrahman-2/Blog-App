@@ -1,10 +1,22 @@
 "use client";
 
 import { Login } from "@/lib/actions";
+import { useEffect } from "react";
 import { useFormState } from "react-dom";
+import { toast } from "sonner";
 
 const LoginForm = () => {
   const [state, formAction] = useFormState(Login, undefined);
+
+  useEffect(() => {
+    if (state?.success) {
+      toast.success("Login successful!");
+    }
+
+    if (state?.error) {
+      toast.error(state.error);
+    }
+  }, [state?.success, state?.error]);
   return (
     <form action={formAction} className="flex flex-col items-center gap-5">
       <input
@@ -23,7 +35,7 @@ const LoginForm = () => {
         Login
       </button>
 
-      <p className="text-red-400">{state?.error}</p>
+      {/* <p className="text-red-400">{state?.error}</p> */}
 
       <div className="w-full">
         <div className="mb-5 flex items-center gap-5">

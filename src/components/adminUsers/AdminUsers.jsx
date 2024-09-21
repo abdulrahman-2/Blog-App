@@ -16,7 +16,7 @@ const AdminUsers = async () => {
           <div className="flex items-center gap-5">
             <div className="relative w-[50px] h-[50px]">
               <Image
-                src={user.img || "/noAvatar.png"}
+                src={user.img || "/noavatar.png"}
                 alt="Avatar"
                 fill
                 className="rounded-xl"

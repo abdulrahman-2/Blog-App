@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Register = () => {
   return (
-    <div className="my-20 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-[200px]">
+    <div className="my-10 md:my-20 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-[200px]">
       <div className="lg:flex-1 relative w-full h-[500px]">
         <Image
           src="/undraw_access_account_re_8spm (1).svg"

@@ -1,7 +1,7 @@
 "use client";
 
 import { editUser } from "@/lib/actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 
 const EditUser = ({ user }) => {
@@ -15,6 +15,16 @@ const EditUser = ({ user }) => {
   const handleCancel = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (state?.success) {
+      toast.success("User Edited successfully!");
+    }
+
+    if (state?.error) {
+      toast.error(state.error);
+    }
+  }, [state?.success, state?.error]);
 
   return (
     <div>
@@ -63,10 +73,9 @@ const EditUser = ({ user }) => {
         <div className="flex items-center gap-10">
           <button
             type="submit"
-            disabled={state?.loading} // Disable while loading
             className="p-3 w-full font-bold border-none rounded-md text-text cursor-pointer bg-btn transition-all hover:bg-btnHover"
           >
-            {state?.loading ? "Editing..." : "Edit"}
+            Edit
           </button>
           <span
             className="p-3 text-center w-full font-bold border-none rounded-md text-text cursor-pointer bg-red-400 transition-all"
@@ -75,7 +84,7 @@ const EditUser = ({ user }) => {
             Cancel
           </span>
         </div>
-        {state?.error && <p className="text-red-400 mt-5">{state.error}</p>}
+        {/* {state?.error && <p className="text-red-400 mt-5">{state.error}</p>} */}
       </form>
       <button
         className="py-[5px] px-[10px] text-text bg-btn hover:bg-btnHover font-bold rounded-md border-none"

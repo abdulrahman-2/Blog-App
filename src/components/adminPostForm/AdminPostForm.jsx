@@ -1,10 +1,22 @@
 "use client";
 
 import { addPost } from "@/lib/actions";
+import { useEffect } from "react";
 import { useFormState } from "react-dom";
+import { toast } from "sonner";
 
 const AdminPostForm = ({ userId }) => {
   const [state, formAction] = useFormState(addPost, undefined);
+
+  useEffect(() => {
+    if (state?.success) {
+      toast.success("Post Added successful!");
+    }
+
+    if (state?.error) {
+      toast.error(state.error);
+    }
+  }, [state?.success, state?.error]);
 
   return (
     <form action={formAction} className="flex-1">
@@ -38,7 +50,7 @@ const AdminPostForm = ({ userId }) => {
       <button className="p-3 mb-5 w-full font-bold border-none rounded-md text-text cursor-pointer bg-btn transition-all hover:bg-btnHover">
         Add
       </button>
-      <p className="text-red-400">{state?.error}</p>
+      {/* <p className="text-red-400">{state?.error}</p> */}
     </form>
   );
 };

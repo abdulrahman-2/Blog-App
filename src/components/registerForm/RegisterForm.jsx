@@ -1,10 +1,12 @@
 "use client";
+
 import { register } from "@/lib/actions";
 import { useFormState } from "react-dom";
 // import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { toast } from "sonner";
 // import React, { useRef } from "react";
 
 const RegisterForm = () => {
@@ -20,8 +22,15 @@ const RegisterForm = () => {
   const router = useRouter();
 
   useEffect(() => {
-    state?.success && router.push("/login");
-  }, [state?.success, router]);
+    if (state?.success) {
+      toast.success("Registration successful!");
+      router.push("/login");
+    }
+
+    if (state?.error) {
+      toast.error(state.error);
+    }
+  }, [state?.success, state?.error, router]);
 
   return (
     <form action={formAction} className="flex flex-col items-center gap-5">
@@ -79,7 +88,7 @@ const RegisterForm = () => {
       <button className="p-3 w-full font-bold border-none rounded-md text-text cursor-pointer bg-btn transition-all hover:bg-btnHover">
         Register
       </button>
-      <p className="text-red-400">{state?.error}</p>
+      {/* <p className="text-red-400">{state?.error}</p> */}
       <Link href="/login">
         Have an account? <b>Login</b>
       </Link>

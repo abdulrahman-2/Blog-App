@@ -30,6 +30,7 @@ export const addPost = async (previousState, formData) => {
     await newPost.save();
     console.log("saved to db");
     revalidatePath("/admin");
+    return { success: true };
   } catch (err) {
     console.error("Error in addPost:", err);
     return { error: "Something went wrong!" };
@@ -84,6 +85,7 @@ export const deletePost = async (formData) => {
     await Post.findByIdAndDelete(id);
     console.log("Deleted from db");
     revalidatePath("/admin");
+    return { success: true };
   } catch (err) {
     console.log(err);
     return { error: "Something went wrong!" };
@@ -120,6 +122,7 @@ export const addUser = async (previousState, formData) => {
     await newUser.save();
     console.log("saved to db");
     revalidatePath("/admin");
+    return { success: true };
   } catch (err) {
     console.error("Error in addUser:", err);
     return { error: "Something went wrong!" };
@@ -179,6 +182,7 @@ export const deleteUser = async (formData) => {
     await User.findByIdAndDelete(id); // Delete the user
     console.log("deleted from db");
     revalidatePath("/admin");
+    return { success: true };
   } catch (err) {
     console.log(err);
     return { error: "Something went wrong!" };
