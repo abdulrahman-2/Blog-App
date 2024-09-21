@@ -3,8 +3,9 @@
 import { useState } from "react";
 import NavLink from "./navLink/NavLink";
 import Image from "next/image";
+import { handleLogOut } from "@/lib/actions";
 
-const Links = () => {
+const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -18,7 +19,6 @@ const Links = () => {
     { title: "Blog", path: "/blog" },
   ];
 
-  const session = true;
   const isAdmin = true;
 
   return (
@@ -28,12 +28,16 @@ const Links = () => {
           <NavLink link={link} key={link.title} />
         ))}
 
-        {session ? (
+        {session?.user ? (
           <>
-            {isAdmin && <NavLink link={{ title: "Admin", path: "/admin" }} />}
-            <button className="p-[10px] font-medium cursor-pointer bg-white text-black rounded-lg">
-              Logout
-            </button>
+            {session.user?.isAdmin && (
+              <NavLink link={{ title: "Admin", path: "/admin" }} />
+            )}
+            <form action={handleLogOut}>
+              <button className="p-[10px] font-medium cursor-pointer bg-white text-black rounded-lg">
+                Logout
+              </button>
+            </form>
           </>
         ) : (
           <NavLink link={{ title: "Login", path: "/login" }} />
@@ -55,6 +59,20 @@ const Links = () => {
             {links.map((link) => (
               <NavLink link={link} key={link.title} />
             ))}
+            {session?.user ? (
+              <>
+                {session.user?.isAdmin && (
+                  <NavLink link={{ title: "Admin", path: "/admin" }} />
+                )}
+                <form action={handleLogOut}>
+                  <button className="p-[10px] font-medium cursor-pointer bg-white text-black rounded-lg">
+                    Logout
+                  </button>
+                </form>
+              </>
+            ) : (
+              <NavLink link={{ title: "Login", path: "/login" }} />
+            )}
           </div>
         </div>
       )}

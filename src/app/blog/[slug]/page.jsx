@@ -4,14 +4,11 @@ import Image from "next/image";
 import { Suspense } from "react";
 
 // fetch data with api
-// const getPost = async (id) => {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-//   const data = await res.json();
+// const getPost = async (slug) => {
+//   const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
 
-//   return data;
+//   return res.json();
 // };
-
-// fetch data without api
 
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
@@ -46,7 +43,7 @@ const Post = async ({ params }) => {
         )}
       </div>
       <div className="flex flex-col gap-10 flex-[2]">
-        <h1 className="text-6xl font-bold">{post?.title}</h1>
+        <h1 className="text-4xl font-bold">{post?.title}</h1>
         {post && (
           <Suspense fallback={<div>Loading...</div>}>
             <PostUser postId={post?.userId} createdAt={post?.createdAt} />

@@ -8,28 +8,40 @@ export const metadata = {
 
 // fetch data with api
 // const getPosts = async () => {
-//   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-//     cache: "no-store",
+//   const res = await fetch("http://localhost:3000/api/blog", {
+//     next: { revalidate: 3600 },
 //   });
-//   const data = await res.json();
 
-//   return data;
+//   if (!res.ok) {
+//     throw new Error("Something went wrong");
+//   }
+
+//   return res.json();
 // };
 
 // fetch data without api
 
 const Blog = async () => {
-  // fetch data with api
+  // Fetch data with API
   // const posts = await getPosts();
 
-  // fetch data without api
+  // Fetch data without API
   const posts = await getPosts();
+
   return (
-    <div className="my-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-20">
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
-    </div>
+    <>
+      {posts.length > 0 ? (
+        <div className="my-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-20">
+          {posts.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </div>
+      ) : (
+        <div className="grid place-items-center text-5xl font-bold">
+          Blog Is Empty
+        </div>
+      )}
+    </>
   );
 };
 

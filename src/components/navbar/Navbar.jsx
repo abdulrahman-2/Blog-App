@@ -1,21 +1,18 @@
 import Link from "next/link";
 import Links from "./links/Links";
 import Image from "next/image";
+import { auth } from "@/lib/auth";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await auth();
+
   return (
     <div className="h-[100px] flex items-center justify-between">
       <Link href="/" className="logo text-3xl font-bold">
-        <Image
-          src="/logo-color.png"
-          alt="logo"
-          priority
-          width={130}
-          height={60}
-        />
+        Bravence
       </Link>
       <div className="links">
-        <Links />
+        <Links session={session} />
       </div>
     </div>
   );
