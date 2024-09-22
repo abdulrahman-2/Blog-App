@@ -3,6 +3,7 @@
 import { editPost } from "@/lib/actions";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
+import { toast } from "sonner";
 
 const EditPost = ({ post }) => {
   const [state, formAction] = useFormState(editPost, undefined);

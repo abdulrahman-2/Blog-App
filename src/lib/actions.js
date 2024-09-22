@@ -68,7 +68,7 @@ export const editPost = async (previousState, formData) => {
 
     console.log("Post updated");
     revalidatePath("/admin");
-    return { success: true, updatedPost };
+    return { success: true };
   } catch (err) {
     console.error("Error in editPost:", err);
     return { error: "Something went wrong!" };
@@ -131,7 +131,7 @@ export const addUser = async (previousState, formData) => {
 
 // handleEditUser
 export const editUser = async (previousState, formData) => {
-  const { username, email, img, id } = Object.fromEntries(formData);
+  const { username, email, img, isAdmin, id } = Object.fromEntries(formData);
 
   try {
     await connectToDb();
@@ -152,7 +152,7 @@ export const editUser = async (previousState, formData) => {
       };
     }
 
-    const updatedData = { username, email, img };
+    const updatedData = { username, email, isAdmin, img };
 
     const updatedUser = await User.findByIdAndUpdate(id, updatedData, {
       new: true,
